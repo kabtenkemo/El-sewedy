@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مدرسة السويدي الدولية للتكنولوجيا التطبيقية والبرمجيات</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('خلفية.jpg') no-repeat center center/cover;
+      height: 100vh;
+    }
+    .faq-item, .testimonial-item {
+      transition: all 0.3s ease;
+    }
+    .faq-item:hover, .testimonial-item:hover {
+      background-color: #fef2f2;
+    }
+    /* Hamburger Menu Icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #DC2626;
+      margin: 2px 0;
+      transition: all 0.3s ease;
+    }
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+    }
+    .mobile-menu.active {
+      display: flex;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .desktop-menu {
+        display: none;
+      }
+      .mobile-menu {
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 20;
+      }
+      .mobile-menu a {
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid #e5e7eb;
+      }
+    }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      background-color: #DC2626; /* لون رمادي فاتح يتناسب مع الموقع */
+      color: #1e293b;
+    }
+    .contact-card {
+      text-align: center;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: white;
+      color: #1e293b;
+      width: 200px;
+    }
+    .contact-card i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg fixed w-full z-10">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-xl sm:text-2xl font-bold text-red-600">مدرسة السويدي الدولية</a>
+      <!-- Desktop Menu -->
+      <div class="desktop-menu space-x-4">
+        <a href="index.html" class="text-gray-700 hover:text-red-600">الرئيسية</a>
+        <a href="#about" class="text-gray-700 hover:text-red-600">من نحن</a>
+        <a href="#faq" class="text-gray-700 hover:text-red-600">الأسئلة الشائعة</a>
+        <a href="contact.html" class="text-gray-700 hover:text-red-600">اتصل بنا</a>
+      </div>
+      <!-- Hamburger Icon -->
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu flex-col hidden">
+      <a href="index.html" class="text-gray-700 hover:text-red-600">الرئيسية</a>
+      <a href="#about" class="text-gray-700 hover:text-red-600">من نحن</a>
+      <a href="#faq" class="text-gray-700 hover:text-red-600">الأسئلة الشائعة</a>
+      <a href="contact.html" class="text-gray-700 hover:text-red-600">اتصل بنا</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero flex items-center justify-center text-center text-white">
+    <div data-aos="fade-up" data-aos-duration="1000" class="px-4">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">مرحبًا بكم في مدرسة السويدي الدولية</h1>
+      <p class="text-lg sm:text-xl mb-6">لتكنولوجيا التطبيقية والبرمجيات</p>
+      <a href="#about" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-sm sm:text-base">اعرف المزيد</a>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-12 sm:py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">معرض الصور</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <img src="WhatsApp Image 2025-05-30 at 11.43.16_7f8d923e.jpg" alt="صورة المدرسة 1" class="rounded-lg shadow-lg w-full h-48 sm:h-64 object-cover" data-aos="zoom-in" data-aos-delay="100">
+        <img src="مدرسة 1.jpg" alt="صورة المدرسة 2" class="rounded-lg shadow-lg w-full h-48 sm:h-64 object-cover" data-aos="zoom-in" data-aos-delay="200">
+        <img src="مدرسة 2.jpg" alt="صورة المدرسة 3" class="rounded-lg shadow-lg w-full h-48 sm:h-64 object-cover" data-aos="zoom-in" data-aos-delay="300">
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-12 sm:py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">آراء الطلاب</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-gray-700 mb-4 text-sm sm:text-base">"تجربة الدراسة في مدرسة السويدي غيرت نظرتي للتكنولوجيا. المعلمون داعمون والمناهج عملية جدًا!"</p>
+          <h3 class="text-base sm:text-lg font-bold text-red-600">أحمد عيد</h3>
+          <p class="text-gray-500 text-xs sm:text-sm">الصف الأول</p>
+        </div>
+        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-gray-700 mb-4 text-sm sm:text-base">"أحببت الأنشطة التكنولوجية والمشاريع العملية التي ساعدتني على تطوير مهاراتي في البرمجة."</p>
+          <h3 class="text-base sm:text-lg font-bold text-red-600">عمر عماد</h3>
+          <p class="text-gray-500 text-xs sm:text-sm">الصف الثاني</p>
+        </div>
+        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="300">
+          <p class="text-gray-700 mb-4 text-sm sm:text-base">"المدرسة توفر بيئة تعليمية ممتازة، والتركيز على الذكاء الاصطناعي فتح لي آفاقًا جديدة."</p>
+          <h3 class="text-base sm:text-lg font-bold text-red-600">منة ناجي</h3>
+          <p class="text-gray-500 text-xs sm:text-sm">الصف الثالث</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-12 sm:py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">من نحن</h2>
+      <p class="text-sm sm:text-lg text-gray-700 mb-4 sm:mb-6" data-aos="fade-up" data-aos-delay="100">
+        مدرسة السويدي الدولية للتكنولوجيا التطبيقية والبرمجيات هي مؤسسة تعليمية رائدة تهدف إلى تمكين الطلاب من خلال التعليم التقني المتقدم. تأسست المدرسة بهدف تقديم مناهج دراسية مبتكرة تركز على البرمجة، تطوير التطبيقات، ومهارات التكنولوجيا الحديثة. نحن ملتزمون بتوفير بيئة تعليمية محفزة تساعد الطلاب على تحقيق إمكاناتهم الكاملة.
+      </p>
+      <p class="text-sm sm:text-lg text-gray-700" data-aos="fade-up" data-aos-delay="200">
+        يضم فريقنا نخبة من المعلمين والخبراء في مجال التكنولوجيا، ونعمل على تجهيز طلابنا بالمهارات اللازمة لمواكبة سوق العمل العالمي. انضم إلينا لتكون جزءًا من مستقبل التكنولوجيا!
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-12 sm:py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">الأسئلة الشائعة</h2>
+      <div class="space-y-4">
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-lg sm:text-xl font-bold text-red-600">ما هي شروط الالتحاق بالمدرسة؟</h3>
+          <p class="text-gray-700 text-sm sm:text-base">يجب أن يكون الطالب حاصلًا على شهادة الإعدادية بدرجة لا تقل عن 70%، واجتياز اختبار القبول والمقابلة الشخصية.</p>
+        </div>
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-lg sm:text-xl font-bold text-red-600">ما هي المناهج التي يتم تدريسها?</h3>
+          <p class="text-gray-700 text-sm sm:text-base">نقدم مناهج متخصصة في البرمجة، تطوير التطبيقات، وتصميم المواقع، والذكاء الاصطناعي.</p>
+        </div>
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-lg sm:text-xl font-bold text-red-600">هل توفر المدرسة أنشطة خارجية?</h3>
+          <p class="text-gray-700 text-sm sm:text-base">نعم، نقدم أنشطة رياضية، ثقافية، وتكنولوجية لتعزيز المهارات الشاملة للطلاب.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Logos Section -->
+  <section class="py-8 sm:py-12 bg-gray-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-red-600" data-aos="fade-up">شركاؤنا</h2>
+      <div class="flex justify-center gap-4 sm:gap-8 flex-wrap">
+        <img src="logo.png" alt="شعار وزارة التربية والتعليم والتعليم التقني" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="100">
+        <img src="iatseg.png" alt="شعار International Applied Technology School" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="200">
+         <img src="untitled-1 (1).png" alt="شعار International Applied Technology School" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="300">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info Section -->
+   <footer class="bg-red-600 text-white py-6 sm:py-8">
+  <section class="contact-info">
+    <div class="contact-card">
+      <i class="fas fa-envelope"></i>
+      <p>البريد الإلكتروني</p>
+      <p>elswedy.iats@gmail.com</p>
+    </div>
+    <div class="contact-card">
+      <i class="fas fa-phone"></i>
+      <p>الهاتف</p>
+      <p>89007669 12 20+</p>
+    </div>
+    <div class="contact-card">
+      <i class="fas fa-map-marker-alt"></i>
+      <p>الموقع</p>
+      <p>مدينة السادس من اكنوبر منطقة ال800 فدان قطاع د</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-sm sm:text-base">© 2025 مدرسة السويدي الدولية للتكنولوجيا التطبيقية والبرمجيات. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+<script type="text/javascript">
+  var gk_isXlsx = false;
+  var gk_xlsxFileLookup = {};
+  var gk_fileData = {};
+  function filledCell(cell) {
+    return cell !== '' && cell != null;
+  }
+  function loadFileData(filename) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+      try {
+        var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+        var firstSheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[firstSheetName];
+
+        // Convert sheet to JSON to filter blank rows
+        var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+        // Filter out blank rows (rows where all cells are empty, null, or undefined)
+        var filteredData = jsonData.filter(row => row.some(filledCell));
+
+        // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+        var headerRowIndex = filteredData.findIndex((row, index) =>
+          row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+        );
+        // Fallback
+        if (headerRowIndex === -1 || headerRowIndex > 25) {
+          headerRowIndex = 0;
+        }
+
+        // Convert filtered JSON back to CSV
+        var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+        csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+        return csv;
+      } catch (e) {
+        console.error(e);
+        return "";
+      }
+    }
+    return gk_fileData[filename] || "";
+  }
+</script>
+<script>
+  AOS.init({
+    disable: window.innerWidth < 768 // Disable AOS on small screens for performance
+  });
+
+  // Hamburger Menu Toggle
+  const hamburger = document.querySelector('.hamburger');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+  });
+</script>
+</body>
+</html>
