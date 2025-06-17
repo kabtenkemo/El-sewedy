@@ -9,6 +9,54 @@
     body {
       font-family: 'Cairo', 'Arial', sans-serif;
       margin: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    /* Light Mode (Default) */
+    body {
+      background-color: #f3f4f6; /* bg-gray-100 */
+      color: #1e293b; /* text-gray-900 */
+    }
+    /* Dark Mode */
+    body.dark {
+      background-color: #1f2937; /* bg-gray-800 */
+      color: #f3f4f6; /* text-gray-100 */
+    }
+    body.dark .bg-white {
+      background-color: #374151; /* bg-gray-700 */
+    }
+    body.dark .bg-gray-100 {
+      background-color: #1f2937; /* bg-gray-800 */
+    }
+    body.dark .text-gray-700 {
+      color: #d1d5db; /* text-gray-300 */
+    }
+    body.dark .text-gray-500 {
+      color: #9ca3af; /* text-gray-400 */
+    }
+    body.dark .bg-red-600 {
+      background-color: #b91c1c; /* darker red for buttons and footer */
+    }
+    body.dark .hover\:bg-red-700:hover {
+      background-color: #991b1b; /* darker hover red */
+    }
+    body.dark .text-red-600 {
+      color: #f87171; /* lighter red for text */
+    }
+    body.dark .hover\:text-red-600:hover {
+      color: #ef4444; /* hover red */
+    }
+    body.dark .faq-item:hover, body.dark .testimonial-item:hover {
+      background-color: #4b5563; /* darker hover for faq/testimonial items */
+    }
+    body.dark .contact-card {
+      background-color: #4b5563; /* bg-gray-600 */
+      color: #f3f4f6; /* text-gray-100 */
+    }
+    body.dark .mobile-menu {
+      background-color: #374151; /* bg-gray-700 */
+    }
+    body.dark .mobile-menu a {
+      border-bottom: 1px solid #4b5563; /* border-gray-600 */
     }
     .hero {
       background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('خلفية.jpg') no-repeat center center/cover;
@@ -36,6 +84,9 @@
       background-color: #DC2626;
       margin: 2px 0;
       transition: all 0.3s ease;
+    }
+    body.dark .hamburger span {
+      background-color: #f87171; /* lighter red for dark mode */
     }
     .mobile-menu {
       display: none;
@@ -108,6 +159,15 @@
         max-width: none;
       }
     }
+    .hidden {
+      display: none;
+    }
+    .show-more-btn, .dark-mode-toggle {
+      transition: background-color 0.3s ease;
+    }
+    .show-more-btn:hover, .dark-mode-toggle:hover {
+      background-color: #b91c1c;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -117,11 +177,14 @@
   <nav class="bg-white shadow-lg fixed w-full z-10">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="index.html" class="text-xl sm:text-2xl font-bold text-red-600">مدرسة السويدي الدولية</a>
-      <div class="desktop-menu space-x-4">
+      <div class="desktop-menu flex items-center space-x-4">
         <a href="index.html" class="text-gray-700 hover:text-red-600">الرئيسية</a>
         <a href="#about" class="text-gray-700 hover:text-red-600">من نحن</a>
         <a href="#faq" class="text-gray-700 hover:text-red-600">الأسئلة الشائعة</a>
         <a href="#contact" class="text-gray-700 hover:text-red-600">اتصل بنا</a>
+        <button id="dark-mode-toggle" class="dark-mode-toggle bg-red-600 text-white p-2 rounded-full" aria-label="تبديل الوضع الليلي">
+          <i class="fas fa-moon"></i>
+        </button>
       </div>
       <div class="hamburger" role="button" aria-label="Toggle menu">
         <span></span>
@@ -134,6 +197,7 @@
       <a href="#about" class="text-gray-700 hover:text-red-600">من نحن</a>
       <a href="#faq" class="text-gray-700 hover:text-red-600">الأسئلة الشائعة</a>
       <a href="#contact" class="text-gray-700 hover:text-red-600">اتصل بنا</a>
+      <button id="mobile-dark-mode-toggle" class="dark-mode-toggle bg-red-600 text-white font-bold py-2 px-4 text-center border-b border-gray-200" aria-label="تبديل الوضع الليلي">تبديل الوضع الليلي <i class="fas fa-moon ml-2"></i></button>
     </div>
   </nav>
 
@@ -199,7 +263,7 @@
   <section id="faq" class="py-12 sm:py-16 bg-white">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600">الأسئلة الشائعة</h2>
-      <div class="space-y-4">
+      <div class="faq-container space-y-4">
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md">
           <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">ما هي شروط الالتحاق بالمدرسة؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">يجب أن يكون الطالب حاصلًا على شهادة الإعدادية بدرجة لا تقل عن 70%، واجتياز اختبار القبول والمقابلة الشخصية.</p>
@@ -212,6 +276,13 @@
           <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">هل توفر المدرسة أنشطة خارجية؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">نعم، نقدم أنشطة رياضية، ثقافية، وتكنولوجية لتعزيز المهارات الشاملة للطلاب.</p>
         </div>
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden">
+          <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">هل يتم توفير سكن للطلبة المغتربين؟</h3>
+          <p class="text-gray-700 text-sm sm:text-base">للأسف لا يتم توفير سكن للطلبة.</p>
+        </div>
+      </div>
+      <div class="text-center mt-6">
+        <button id="show-more-faq" class="show-more-btn bg-red-600 text-white font-bold py-2 px-4 rounded hover:bg-red-700" aria-label="عرض المزيد من الأسئلة الشائعة">عرض المزيد</button>
       </div>
     </div>
   </section>
@@ -264,6 +335,43 @@
         mobileMenu.classList.remove('active');
       });
     });
+
+    // Show More FAQ Button
+    const showMoreBtn = document.querySelector('#show-more-faq');
+    const faqContainer = document.querySelector('.faq-container');
+    showMoreBtn.addEventListener('click', () => {
+      const hiddenFaqs = faqContainer.querySelectorAll('.faq-item.hidden');
+      hiddenFaqs.forEach(faq => {
+        faq.classList.remove('hidden');
+      });
+      showMoreBtn.classList.add('hidden');
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.querySelector('#dark-mode-toggle');
+    const mobileDarkModeToggle = document.querySelector('#mobile-dark-mode-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark');
+      darkModeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+      mobileDarkModeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+      body.classList.toggle('dark');
+      const isDarkMode = body.classList.contains('dark');
+      darkModeToggle.querySelector('i').classList.toggle('fa-moon', !isDarkMode);
+      darkModeToggle.querySelector('i').classList.toggle('fa-sun', isDarkMode);
+      mobileDarkModeToggle.querySelector('i').classList.toggle('fa-moon', !isDarkMode);
+      mobileDarkModeToggle.querySelector('i').classList.toggle('fa-sun', isDarkMode);
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
+
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+    mobileDarkModeToggle.addEventListener('click', toggleDarkMode);
   </script>
 </body>
 </html>
