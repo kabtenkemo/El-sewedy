@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>مدرسة السويدي الدولية للتكنولوجيا التطبيقية والبرمجيات</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       font-family: 'Cairo', 'Arial', sans-serif;
@@ -34,19 +35,19 @@
       color: #9ca3af; /* text-gray-400 */
     }
     body.dark .bg-red-600 {
-      background-color: #b91c1c; /* darker red for buttons and footer */
+      background-color: #b91c1c; /* darker red */
     }
     body.dark .hover\:bg-red-700:hover {
       background-color: #991b1b; /* darker hover red */
     }
     body.dark .text-red-600 {
-      color: #f87171; /* lighter red for text */
+      color: #f87171; /* lighter red */
     }
     body.dark .hover\:text-red-600:hover {
       color: #ef4444; /* hover red */
     }
     body.dark .faq-item:hover, body.dark .testimonial-item:hover {
-      background-color: #4b5563; /* darker hover for faq/testimonial items */
+      background-color: #4b5563; /* bg-gray-600 */
     }
     body.dark .contact-card {
       background-color: #4b5563; /* bg-gray-600 */
@@ -86,7 +87,7 @@
       transition: all 0.3s ease;
     }
     body.dark .hamburger span {
-      background-color: #f87171; /* lighter red for dark mode */
+      background-color: #f87171; /* lighter red */
     }
     .mobile-menu {
       display: none;
@@ -203,7 +204,7 @@
 
   <!-- Hero Section -->
   <section class="hero flex items-center justify-center text-center text-white">
-    <div class="px-4">
+    <div class="px-4" data-aos="fade-up" data-aos-duration="1000">
       <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">مرحبًا بكم في مدرسة السويدي الدولية</h1>
       <p class="text-base sm:text-lg md:text-xl mb-6">لتكنولوجيا التطبيقية والبرمجيات</p>
       <a href="#about" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-sm sm:text-base">اعرف المزيد</a>
@@ -213,11 +214,11 @@
   <!-- Gallery Section -->
   <section class="py-12 sm:py-16 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600">معرض الصور</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">معرض الصور</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <img src="WhatsApp Image 2025-05-30 at 11.43.16_7f8d923e.jpg" alt="صورة من داخل مدرسة السويدي 1" class="gallery-img">
-        <img src="مدرسة 1.jpg" alt="صورة من داخل مدرسة السويدي 2" class="gallery-img">
-        <img src="مدرسة 2.jpg" alt="صورة من داخل مدرسة السويدي 3" class="gallery-img">
+        <img src="WhatsApp Image 2025-05-30 at 11.43.16_7f8d923e.jpg" alt="صورة من داخل مدرسة السويدي 1" class="gallery-img" data-aos="zoom-in" data-aos-delay="100">
+        <img src="مدرسة 1.jpg" alt="صورة من داخل مدرسة السويدي 2" class="gallery-img" data-aos="zoom-in" data-aos-delay="200">
+        <img src="مدرسة 2.jpg" alt="صورة من داخل مدرسة السويدي 3" class="gallery-img" data-aos="zoom-in" data-aos-delay="300">
       </div>
     </div>
   </section>
@@ -225,19 +226,19 @@
   <!-- Testimonials Section -->
   <section class="py-12 sm:py-16 bg-gray-100">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600">آراء الطلاب</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">آراء الطلاب</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white">
+        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="100">
           <p class="text-gray-700 mb-4 text-sm sm:text-base">"تجربة الدراسة في مدرسة السويدي غيرت نظرتي للتكنولوجيا. المعلمون داعمون والمناهج عملية جدًا!"</p>
           <h3 class="text-base sm:text-lg font-bold text-red-600">أحمد عيد</h3>
           <p class="text-gray-500 text-xs sm:text-sm">الصف الأول</p>
         </div>
-        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white">
+        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="200">
           <p class="text-gray-700 mb-4 text-sm sm:text-base">"أحببت الأنشطة التكنولوجية والمشاريع العملية التي ساعدتني على تطوير مهاراتي في البرمجة."</p>
           <h3 class="text-base sm:text-lg font-bold text-red-600">عمر عماد</h3>
           <p class="text-gray-500 text-xs sm:text-sm">الصف الثاني</p>
         </div>
-        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white">
+        <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="300">
           <p class="text-gray-700 mb-4 text-sm sm:text-base">"المدرسة توفر بيئة تعليمية ممتازة، والتركيز على الذكاء الاصطناعي فتح لي آفاقًا جديدة."</p>
           <h3 class="text-base sm:text-lg font-bold text-red-600">منة ناجي</h3>
           <p class="text-gray-500 text-xs sm:text-sm">الصف الثالث</p>
@@ -249,11 +250,11 @@
   <!-- About Section -->
   <section id="about" class="py-12 sm:py-16 bg-gray-100">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600">من نحن</h2>
-      <p class="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">من نحن</h2>
+      <p class="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6" data-aos="fade-up" data-aos-delay="100">
         مدرسة السويدي الدولية للتكنولوجيا التطبيقية والبرمجيات هي مؤسسة تعليمية رائدة تهدف إلى تمكين الطلاب من خلال التعليم التقني المتقدم. تأسست المدرسة بهدف تقديم مناهج دراسية مبتكرة تركز على البرمجة، تطوير التطبيقات، ومهارات التكنولوجيا الحديثة. نحن ملتزمون بتوفير بيئة تعليمية محفزة تساعد الطلاب على تحقيق إمكاناتهم الكاملة.
       </p>
-      <p class="text-sm sm:text-base md:text-lg text-gray-700">
+      <p class="text-sm sm:text-base md:text-lg text-gray-700" data-aos="fade-up" data-aos-delay="200">
         يضم فريقنا نخبة من المعلمين والخبراء في مجال التكنولوجيا، ونعمل على تجهيز طلابنا بالمهارات اللازمة لمواكبة سوق العمل العالمي. انضم إلينا لتكون جزءًا من مستقبل التكنولوجيا!
       </p>
     </div>
@@ -262,21 +263,21 @@
   <!-- FAQ Section -->
   <section id="faq" class="py-12 sm:py-16 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600">الأسئلة الشائعة</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">الأسئلة الشائعة</h2>
       <div class="faq-container space-y-4">
-        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md">
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
           <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">ما هي شروط الالتحاق بالمدرسة؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">يجب أن يكون الطالب حاصلًا على شهادة الإعدادية بدرجة لا تقل عن 70%، واجتياز اختبار القبول والمقابلة الشخصية.</p>
         </div>
-        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md">
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">ما هي المناهج التي يتم تدريسها؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">نقدم مناهج متخصصة في البرمجة، تطوير التطبيقات، وتصميم المواقع، والذكاء الاصطناعي.</p>
         </div>
-        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md">
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
           <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">هل توفر المدرسة أنشطة خارجية؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">نعم، نقدم أنشطة رياضية، ثقافية، وتكنولوجية لتعزيز المهارات الشاملة للطلاب.</p>
         </div>
-        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden">
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="400">
           <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">هل يتم توفير سكن للطلبة المغتربين؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">للأسف لا يتم توفير سكن للطلبة.</p>
         </div>
@@ -290,11 +291,11 @@
   <!-- Partners Logos Section -->
   <section class="py-8 sm:py-12 bg-gray-100">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-red-600">شركاؤنا</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-red-600" data-aos="fade-up">شركاؤنا</h2>
       <div class="flex justify-center gap-4 sm:gap-8 flex-wrap">
-        <img src="logo.png" alt="شعار وزارة التربية والتعليم والتعليم التقني" class="h-16 sm:h-24 object-contain">
-        <img src="iatseg.png" alt="شعار International Applied Technology School" class="h-16 sm:h-24 object-contain">
-        <img src="untitled-1 (1).png" alt="شعار International Applied Technology School" class="h-16 sm:h-24 object-contain">
+        <img src="logo.png" alt="شعار وزارة التربية والتعليم والتعليم التقني" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="100">
+        <img src="iatseg.png" alt="شعار International Applied Technology School" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="200">
+        <img src="untitled-1 (1).png" alt="شعار International Applied Technology School" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="300">
       </div>
     </div>
   </section>
@@ -302,17 +303,17 @@
   <!-- Contact Info Section -->
   <footer id="contact" class="bg-red-600 text-white py-6 sm:py-8">
     <section class="contact-info">
-      <div class="contact-card">
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
         <i class="fas fa-envelope"></i>
         <p>البريد الإلكتروني</p>
         <p>elswedy.iats@gmail.com</p>
       </div>
-      <div class="contact-card">
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
         <i class="fas fa-phone"></i>
         <p>الهاتف</p>
-        <p>+20 12 89007669</p>
+        <p> 89007669 12 20+</p>
       </div>
-      <div class="contact-card">
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
         <i class="fas fa-map-marker-alt"></i>
         <p>الموقع</p>
         <p>مدينة السادس من أكتوبر، منطقة الـ800 فدان، قطاع د</p>
@@ -323,7 +324,13 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Initialize AOS
+    AOS.init({
+      disable: window.innerWidth < 768 // Disable AOS on small screens
+    });
+
     // Hamburger Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -343,7 +350,9 @@
       const hiddenFaqs = faqContainer.querySelectorAll('.faq-item.hidden');
       hiddenFaqs.forEach(faq => {
         faq.classList.remove('hidden');
+        faq.setAttribute('data-aos', 'fade-up'); // Re-apply AOS for newly shown FAQs
       });
+      AOS.refresh(); // Refresh AOS to animate newly visible elements
       showMoreBtn.classList.add('hidden');
     });
 
