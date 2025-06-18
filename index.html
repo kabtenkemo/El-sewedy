@@ -11,6 +11,8 @@
       font-family: 'Cairo', 'Arial', sans-serif;
       margin: 0;
       transition: background-color 0.3s ease, color 0.3s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     /* Light Mode (Default) */
     body {
@@ -56,74 +58,90 @@
     body.dark .mobile-menu {
       background-color: #374151; /* bg-gray-700 */
     }
-    body.dark .mobile-menu a {
-      border-bottom: 1px solid #4b5563; /* border-gray-600 */
+    body.dark .mobile-menu-btn {
+      background-color: #b91c1c; /* darker red */
+      color: #f3f4f6; /* text-gray-100 */
+    }
+    body.dark .mobile-menu-btn:hover {
+      background-color: #991b1b; /* darker hover red */
     }
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('خلفية.jpg') no-repeat center center/cover;
-      min-height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('خلفية.jpg') no-repeat center center/cover;
+      min-height: 70vh; /* Reduced height for mobile */
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      text-align: center;
     }
     .faq-item, .testimonial-item {
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease;
     }
     .faq-item:hover, .testimonial-item:hover {
       background-color: #fef2f2;
     }
     .hamburger {
-      display: none;
-      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      padding: 0.5rem;
-    }
-    .hamburger span {
-      width: 25px;
-      height: 3px;
+      padding: 1rem;
       background-color: #DC2626;
-      margin: 2px 0;
-      transition: all 0.3s ease;
+      color: white;
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+      transition: background-color 0.3s ease;
+      touch-action: manipulation; /* Improve touch interaction */
     }
-    body.dark .hamburger span {
-      background-color: #f87171; /* lighter red */
+    body.dark .hamburger {
+      background-color: #b91c1c;
+    }
+    .hamburger:hover {
+      background-color: #b91c1c;
+    }
+    body.dark .hamburger:hover {
+      background-color: #991b1b;
     }
     .mobile-menu {
       display: none;
       flex-direction: column;
-      position: absolute;
+      position: fixed;
       top: 64px;
       right: 0;
+      left: 0;
       background-color: white;
       width: 100%;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 20;
       transition: transform 0.3s ease-in-out;
       transform: translateY(-100%);
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
     }
     .mobile-menu.active {
       display: flex;
       transform: translateY(0);
     }
-    .mobile-menu a {
-      padding: 1.5rem;
+    .mobile-menu-btn {
+      background-color: #DC2626;
+      color: white;
+      font-weight: bold;
+      border-radius: 0.5rem;
+      margin: 0.75rem;
+      padding: 1.25rem;
       text-align: center;
-      border-bottom: 1px solid #e5e7eb;
-      font-size: 1.1rem;
+      font-size: 1.125rem;
+      width: calc(100% - 1.5rem);
+      transition: background-color 0.3s ease;
+      touch-action: manipulation;
     }
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-      .desktop-menu {
-        display: none;
-      }
+    .mobile-menu-btn:hover {
+      background-color: #b91c1c;
     }
     .contact-info {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       gap: 1rem;
       padding: 1.5rem;
       background-color: #DC2626;
@@ -131,43 +149,104 @@
     }
     .contact-card {
       text-align: center;
-      padding: 1rem;
+      padding: 1.25rem;
       border-radius: 0.5rem;
       background-color: white;
       color: #1e293b;
-      flex: 1 1 150px;
-      max-width: 200px;
+      width: 100%;
+      max-width: 300px;
     }
     .contact-card i {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
     }
     .gallery-img {
       width: 100%;
       aspect-ratio: 4/3;
       object-fit: cover;
       border-radius: 0.5rem;
-    }
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .contact-card {
-        flex: 1 1 100%;
-        max-width: none;
-      }
+      loading: lazy; /* Lazy load images */
     }
     .hidden {
       display: none;
     }
     .show-more-btn, .dark-mode-toggle {
       transition: background-color 0.3s ease;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      touch-action: manipulation;
     }
     .show-more-btn:hover, .dark-mode-toggle:hover {
       background-color: #b91c1c;
+    }
+    /* Mobile-first media queries */
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+      .mobile-menu {
+        display: none !important;
+      }
+      .desktop-menu {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .hero {
+        min-height: 100vh;
+      }
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero p {
+        font-size: 1.25rem;
+      }
+      .contact-info {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .contact-card {
+        flex: 1 1 150px;
+        max-width: 200px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .hero a {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      .faq-item h3, .testimonial-item h3 {
+        font-size: 1.125rem;
+      }
+      .faq-item p, .testimonial-item p {
+        font-size: 0.875rem;
+      }
+      .mobile-menu-btn {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+    }
+    /* High contrast for accessibility */
+    @media (prefers-contrast: high) {
+      body {
+        background-color: #fff;
+        color: #000;
+      }
+      body.dark {
+        background-color: #000;
+        color: #fff;
+      }
+      a, button {
+        outline: 2px solid currentColor;
+      }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
@@ -177,72 +256,70 @@
   <!-- Navigation -->
   <nav class="bg-white shadow-lg fixed w-full z-10">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-xl sm:text-2xl font-bold text-red-600">مدرسة السويدي الدولية</a>
-      <div class="desktop-menu flex items-center space-x-4">
-        <a href="index.html" class="text-gray-700 hover:text-red-600">الرئيسية</a>
-        <a href="#about" class="text-gray-700 hover:text-red-600">من نحن</a>
-        <a href="#faq" class="text-gray-700 hover:text-red-600">الأسئلة الشائعة</a>
-        <a href="#contact" class="text-gray-700 hover:text-red-600">اتصل بنا</a>
-        <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2F8vg8bHAz6FoUrAxt7%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRjFuV3pibTZwc1lQRmZCaAEedezdliCodVJKXXfKaTzSlb1mRSgX1w2C_hNKSvjRCw8b5UV7itTER0gHr88_aem_OmJ6xBALqsGLi-9vtpKDmw&h=AT3f-SVPZRms_TP5FfMlkJIVJYyUllA9dtydbFILVAhCVOqGxRRmcXuDutowBp3EBh9U4bfkVvEVEJaCUUXlnobOFvpm9u72xGWouoqWqZS5DekpIkcnFLMhuZy3qedA876qeLLIKn8dTfCj&__tn__=-UK-R&c[0]=AT37pnov2UXwx3Q_5WQEwlPIB-CNN7W8z_Cpy0942JKG_4jINhuR3i1XtgM70D8CJ3pkRwz-KVoYSqtvsCg9nGZQpJJ-OoWkdDSlqgQ5csoczblfysvhXY9Lde4wJ0qyj6cn2sMDdrlMG0wWmlBEOHkoLFq5s_9_jXWeeKpzTGOHKMtJYpy5i-yqgtOYh5lwBmZDszF0SrGD_IX-g4bYrpjJdwku_vRPLMQbIKLvyoqbNhYMKc24-E1mn-Ft" class="text-gray-700 hover:text-red-600">التقديم</a>
+      <a href="index.html" class="text-lg sm:text-2xl font-bold text-red-600">مدرسة السويدي الدولية</a>
+      <div class="desktop-menu items-center space-x-4 hidden md:flex">
+        <a href="index.html" class="text-gray-700 hover:text-red-600 text-base">الرئيسية</a>
+        <a href="#about" class="text-gray-700 hover:text-red-600 text-base">من نحن</a>
+        <a href="#faq" class="text-gray-700 hover:text-red-600 text-base">الأسئلة الشائعة</a>
+        <a href="#contact" class="text-gray-700 hover:text-red-600 text-base">اتصل بنا</a>
+        <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2F8vg8bHAz6FoUrAxt7%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRjFuV3pibTZwc1lQRmZCaAEedezdliCodVJKXXfKaTzSlb1mRSgX1w2C_hNKSvjRCw8b5UV7itTER0gHr88_aem_OmJ6xBALqsGLi-9vtpKDmw&h=AT3f-SVPZRms_TP5FfMlkJIVJYyUllA9dtydbFILVAhCVOqGxRRmcXuDutowBp3EBh9U4bfkVvEVEJaCUUXlnobOFvpm9u72xGWouoqWqZS5DekpIkcnFLMhuZy3qedA876qeLLIKn8dTfCj&__tn__=-UK-R&c[0]=AT37pnov2UXwx3Q_5WQEwlPIB-CNN7W8z_Cpy0942JKG_4jINhuR3i1XtgM70D8CJ3pkRwz-KVoYSqtvsCg9nGZQpJJ-OoWkdDSlqgQ5csoczblfysvhXY9Lde4wJ0qyj6cn2sMDdrlMG0wWmlBEOHkoLFq5s_9_jXWeeKpzTGOHKMtJYpy5i-yqgtOYh5lwBmZDszF0SrGD_IX-g4bYrpjJdwku_vRPLMQbIKLvyoqbNhYMKc24-E1mn-Ft" class="text-gray-700 hover:text-red-600 text-base">التقديم</a>
         <button id="dark-mode-toggle" class="dark-mode-toggle bg-red-600 text-white p-2 rounded-full" aria-label="تبديل الوضع الليلي">
           <i class="fas fa-moon"></i>
         </button>
       </div>
-      <div class="hamburger" role="button" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <button class="hamburger md:hidden" role="button" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
     <div class="mobile-menu">
-      <a href="index.html" class="text-gray-700 hover:text-red-600">الرئيسية</a>
-      <a href="#about" class="text-gray-700 hover:text-red-600">من نحن</a>
-      <a href="#faq" class="text-gray-700 hover:text-red-600">الأسئلة الشائعة</a>
-      <a href="#contact" class="text-gray-700 hover:text-red-600">اتصل بنا</a>
-      <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2F8vg8bHAz6FoUrAxt7%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRjFuV3pibTZwc1lQRmZCaAEedezdliCodVJKXXfKaTzSlb1mRSgX1w2C_hNKSvjRCw8b5UV7itTER0gHr88_aem_OmJ6xBALqsGLi-9vtpKDmw&h=AT3f-SVPZRms_TP5FfMlkJIVJYyUllA9dtydbFILVAhCVOqGxRRmcXuDutowBp3EBh9U4bfkVvEVEJaCUUXlnobOFvpm9u72xGWouoqWqZS5DekpIkcnFLMhuZy3qedA876qeLLIKn8dTfCj&__tn__=-UK-R&c[0]=AT37pnov2UXwx3Q_5WQEwlPIB-CNN7W8z_Cpy0942JKG_4jINhuR3i1XtgM70D8CJ3pkRwz-KVoYSqtvsCg9nGZQpJJ-OoWkdDSlqgQ5csoczblfysvhXY9Lde4wJ0qyj6cn2sMDdrlMG0wWmlBEOHkoLFq5s_9_jXWeeKpzTGOHKMtJYpy5i-yqgtOYh5lwBmZDszF0SrGD_IX-g4bYrpjJdwku_vRPLMQbIKLvyoqbNhYMKc24-E1mn-Ft" class="text-gray-700 hover:text-red-600">التقديم</a>
-      <button id="mobile-dark-mode-toggle" class="dark-mode-toggle bg-red-600 text-white font-bold py-2 px-4 text-center border-b border-gray-200" aria-label="تبديل الوضع الليلي">تبديل الوضع الليلي <i class="fas fa-moon ml-2"></i></button>
+      <a href="index.html" class="mobile-menu-btn">الرئيسية</a>
+      <a href="#about" class="mobile-menu-btn">من نحن</a>
+      <a href="#faq" class="mobile-menu-btn">الأسئلة الشائعة</a>
+      <a href="#contact" class="mobile-menu-btn">اتصل بنا</a>
+      <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2F8vg8bHAz6FoUrAxt7%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRjFuV3pibTZwc1lQRmZCaAEedezdliCodVJKXXfKaTzSlb1mRSgX1w2C_hNKSvjRCw8b5UV7itTER0gHr88_aem_OmJ6xBALqsGLi-9vtpKDmw&h=AT3f-SVPZRms_TP5FfMlkJIVJYyUllA9dtydbFILVAhCVOqGxRRmcXuDutowBp3EBh9U4bfkVvEVEJaCUUXlnobOFvpm9u72xGWouoqWqZS5DekpIkcnFLMhuZy3qedA876qeLLIKn8dTfCj&__tn__=-UK-R&c[0]=AT37pnov2UXwx3Q_5WQEwlPIB-CNN7W8z_Cpy0942JKG_4jINhuR3i1XtgM70D8CJ3pkRwz-KVoYSqtvsCg9nGZQpJJ-OoWkdDSlqgQ5csoczblfysvhXY9Lde4wJ0qyj6cn2sMDdrlMG0WmlBEOHkoLFq5s_9_jXWeeKpzTGOHKMtJYpy5i-yqgtOYh5lwBmZDszF0SrGD_IX-g4bYrpjJdwku_vRPLMQbIKLvyoqbNhYMKc24-E1mn-Ft" class="mobile-menu-btn">التقديم</a>
+      <button id="mobile-dark-mode-toggle" class="mobile-menu-btn dark-mode-toggle" aria-label="تبديل الوضع الليلي"><i class="fas fa-moon mr-2"></i>تبديل الوضع الليلي</button>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero flex items-center justify-center text-center text-white">
     <div class="px-4" data-aos="fade-up" data-aos-duration="1000">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">مرحبًا بكم في مدرسة السويدي الدولية</h1>
-      <p class="text-base sm:text-lg md:text-xl mb-6">لتكنولوجيا التطبيقية والبرمجيات</p>
+      <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">مرحبًا بكم في مدرسة السويدي الدولية</h1>
+      <p class="text-sm sm:text-lg md:text-xl mb-6">لتكنولوجيا التطبيقية والبرمجيات</p>
       <a href="#about" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-sm sm:text-base">اعرف المزيد</a>
     </div>
   </section>
 
   <!-- Gallery Section -->
-  <section class="py-12 sm:py-16 bg-white">
+  <section class="py-8 sm:py-16 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">معرض الصور</h2>
+      <h2 class="text-xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-red-600" data-aos="fade-up">معرض الصور</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <img src="WhatsApp Image 2025-05-30 at 11.43.16_7f8d923e.jpg" alt="صورة من داخل مدرسة السويدي 1" class="gallery-img" data-aos="zoom-in" data-aos-delay="100">
-        <img src="مدرسة 1.jpg" alt="صورة من داخل مدرسة السويدي 2" class="gallery-img" data-aos="zoom-in" data-aos-delay="200">
-        <img src="مدرسة 2.jpg" alt="صورة من داخل مدرسة السويدي 3" class="gallery-img" data-aos="zoom-in" data-aos-delay="300">
+        <img src="WhatsApp Image 2025-05-30 at 11.43.16_7f8d923e.jpg" alt="صورة من داخل مدرسة السويدي 1" class="gallery-img" loading="lazy" data-aos="zoom-in" data-aos-delay="100">
+        <img src="مدرسة 1.jpg" alt="صورة من داخل مدرسة السويدي 2" class="gallery-img" loading="lazy" data-aos="zoom-in" data-aos-delay="200">
+        <img src="مدرسة 2.jpg" alt="صورة من داخل مدرسة السويدي 3" class="gallery-img" loading="lazy" data-aos="zoom-in" data-aos-delay="300">
       </div>
     </div>
   </section>
 
   <!-- Testimonials Section -->
-  <section class="py-12 sm:py-16 bg-gray-100">
+  <section class="py-8 sm:py-16 bg-gray-100">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">آراء الطلاب</h2>
+      <h2 class="text-xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-red-600" data-aos="fade-up">آراء الطلاب</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="100">
           <p class="text-gray-700 mb-4 text-sm sm:text-base">"تجربة الدراسة في مدرسة السويدي غيرت نظرتي للتكنولوجيا. المعلمون داعمون والمناهج عملية جدًا!"</p>
-          <h3 class="text-base sm:text-lg font-bold text-red-600">أحمد عيد</h3>
+          <h3 class="text-sm sm:text-lg font-bold text-red-600">أحمد عيد</h3>
           <p class="text-gray-500 text-xs sm:text-sm">الصف الأول</p>
         </div>
         <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="200">
           <p class="text-gray-700 mb-4 text-sm sm:text-base">"أحببت الأنشطة التكنولوجية والمشاريع العملية التي ساعدتني على تطوير مهاراتي في البرمجة."</p>
-          <h3 class="text-base sm:text-lg font-bold text-red-600">عمر عماد</h3>
+          <h3 class="text-sm sm:text-lg font-bold text-red-600">عمر عماد</h3>
           <p class="text-gray-500 text-xs sm:text-sm">الصف الثاني</p>
         </div>
         <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="300">
           <p class="text-gray-700 mb-4 text-sm sm:text-base">"المدرسة توفر بيئة تعليمية ممتازة، والتركيز على الذكاء الاصطناعي فتح لي آفاقًا جديدة."</p>
-          <h3 class="text-base sm:text-lg font-bold text-red-600">منة ناجي</h3>
+          <h3 class="text-sm sm:text-lg font-bold text-red-600">منة ناجي</h3>
           <p class="text-gray-500 text-xs sm:text-sm">الصف الثالث</p>
         </div>
       </div>
@@ -250,9 +327,9 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-12 sm:py-16 bg-gray-100">
+  <section id="about" class="py-8 sm:py-16 bg-gray-100">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">من نحن</h2>
+      <h2 class="text-xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-red-600" data-aos="fade-up">من نحن</h2>
       <p class="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6" data-aos="fade-up" data-aos-delay="100">
         مدرسة السويدي الدولية للتكنولوجيا التطبيقية والبرمجيات هي مؤسسة تعليمية رائدة تهدف إلى تمكين الطلاب من خلال التعليم التقني المتقدم. تأسست المدرسة بهدف تقديم مناهج دراسية مبتكرة تركز على البرمجة، تطوير التطبيقات، ومهارات التكنولوجيا الحديثة. نحن ملتزمون بتوفير بيئة تعليمية محفزة تساعد الطلاب على تحقيق إمكاناتهم الكاملة.
       </p>
@@ -263,34 +340,34 @@
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="py-12 sm:py-16 bg-white">
+  <section id="faq" class="py-8 sm:py-16 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 text-red-600" data-aos="fade-up">الأسئلة الشائعة</h2>
+      <h2 class="text-xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-red-600" data-aos="fade-up">الأسئلة الشائعة</h2>
       <div class="faq-container space-y-4">
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">ما هي شروط الالتحاق بالمدرسة؟</h3>
-          <p class="text-gray-700 text-sm sm:text-base">يجب أن يكون الطالب حاصلًا على شهادة الإعدادية بدرجة لا تقل عن 220 درجة حسب تنسيق العام السابق و في انتظار التنسيق الجديد، واجتياز اختبار القبول والمقابلة الشخصية.</p>
+          <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">ما هي شروط الالتحاق بالمدرسة؟</h3>
+          <p class="text-gray-700 text-sm sm:text-base">يجب أن يكون الطالب حاصلًا على شهادة الإعدادية بدرجة لا تقل عن 220 درجة حسب تنسيق العام السابق وفي انتظار التنسيق الجديد، واجتياز اختبار القبول والمقابلة الشخصية.</p>
         </div>
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">ما هي المناهج التي يتم تدريسها؟</h3>
+          <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">ما هي المناهج التي يتم تدريسها؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">نقدم مناهج متخصصة في البرمجة، تطوير التطبيقات، وتصميم المواقع، والذكاء الاصطناعي.</p>
         </div>
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
-          <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">هل توفر المدرسة أنشطة خارجية؟</h3>
+          <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">هل توفر المدرسة أنشطة خارجية؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">نعم، نقدم أنشطة رياضية، ثقافية، وتكنولوجية لتعزيز المهارات الشاملة للطلاب.</p>
         </div>
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="400">
-          <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">هل يتم توفير سكن للطلبة المغتربين؟</h3>
-          <p class="text-gray-700 text-sm sm:text-base">للأسف لا يتم توفير سكن للطلبة و لكن يمكن للطالب اخذ سكن علي نفقته الخاصة.</p>
+          <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">هل يتم توفير سكن للطلبة المغتربين؟</h3>
+          <p class="text-gray-700 text-sm sm:text-base">للأسف لا يتم توفير سكن للطلبة ولكن يمكن للطالب أخذ سكن على نفقته الخاصة.</p>
         </div>
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="400">
-          <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">كم هي مدة الدراسة بالمدرسة؟</h3>
+          <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">كم هي مدة الدراسة بالمدرسة؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">مدة الدراسة تكون 3 سنوات</p>
         </div>
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="400">
-          <h3 class="text-base sm:text-lg md:text-xl font-bold text-red-600">كم هي مصاريف المدرسة السنوية؟</h3>
-          <p class="text-gray-700 text-sm sm:text-base">مصاريف المدرسة السنوية هي مصاريف حكومية لا تتخطي 500 جنيه مصري</p>
-        </div
+          <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">كم هي مصاريف المدرسة السنوية؟</h3>
+          <p class="text-gray-700 text-sm sm:text-base">مصاريف المدرسة السنوية هي مصاريف حكومية لا تتخطى 500 جنيه مصري</p>
+        </div>
       </div>
       <div class="text-center mt-6">
         <button id="show-more-faq" class="show-more-btn bg-red-600 text-white font-bold py-2 px-4 rounded hover:bg-red-700" aria-label="عرض المزيد من الأسئلة الشائعة">عرض المزيد</button>
@@ -301,11 +378,11 @@
   <!-- Partners Logos Section -->
   <section class="py-8 sm:py-12 bg-gray-100">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-red-600" data-aos="fade-up">شركاؤنا</h2>
+      <h2 class="text-xl sm:text-3xl font-bold text-center mb-4 sm:mb-6 text-red-600" data-aos="fade-up">شركاؤنا</h2>
       <div class="flex justify-center gap-4 sm:gap-8 flex-wrap">
-        <img src="logo.png" alt="شعار وزارة التربية والتعليم والتعليم التقني" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="100">
-        <img src="iatseg.png" alt="شعار International Applied Technology School" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="200">
-        <img src="untitled-1 (1).png" alt="شعار شركة السويدي الكتروميتر" class="h-16 sm:h-24 object-contain" data-aos="zoom-in" data-aos-delay="300">
+        <img src="logo.png" alt="شعار وزارة التربية والتعليم والتعليم التقني" class="h-12 sm:h-24 object-contain" loading="lazy" data-aos="zoom-in" data-aos-delay="100">
+        <img src="iatseg.png" alt="شعار International Applied Technology School" class="h-12 sm:h-24 object-contain" loading="lazy" data-aos="zoom-in" data-aos-delay="200">
+        <img src="untitled-1 (1).png" alt="شعار شركة السويدي الكتروميتر" class="h-12 sm:h-24 object-contain" loading="lazy" data-aos="zoom-in" data-aos-delay="300">
       </div>
     </div>
   </section>
@@ -321,7 +398,7 @@
       <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
         <i class="fas fa-phone"></i>
         <p>الهاتف</p>
-        <p> 89007669 12 20+</p>
+        <p>+201289007669</p>
       </div>
       <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
         <i class="fas fa-map-marker-alt"></i>
@@ -338,7 +415,9 @@
   <script>
     // Initialize AOS
     AOS.init({
-      disable: window.innerWidth < 768 // Disable AOS on small screens
+      disable: window.innerWidth < 768, // Disable AOS on mobile
+      once: true, // Run animations only once
+      duration: 600
     });
 
     // Hamburger Menu Toggle
@@ -346,10 +425,12 @@
     const mobileMenu = document.querySelector('.mobile-menu');
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('active'));
     });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
+    mobileMenu.querySelectorAll('a, button').forEach(item => {
+      item.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
 
@@ -360,9 +441,9 @@
       const hiddenFaqs = faqContainer.querySelectorAll('.faq-item.hidden');
       hiddenFaqs.forEach(faq => {
         faq.classList.remove('hidden');
-        faq.setAttribute('data-aos', 'fade-up'); // Re-apply AOS for newly shown FAQs
+        faq.setAttribute('data-aos', 'fade-up');
       });
-      AOS.refresh(); // Refresh AOS to animate newly visible elements
+      AOS.refresh();
       showMoreBtn.classList.add('hidden');
     });
 
@@ -391,6 +472,13 @@
 
     darkModeToggle.addEventListener('click', toggleDarkMode);
     mobileDarkModeToggle.addEventListener('click', toggleDarkMode);
+
+    // Prevent double-tap zoom on mobile
+    document.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
   </script>
 </body>
 </html>
