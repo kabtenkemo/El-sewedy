@@ -67,7 +67,7 @@
     }
     .hero {
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('خلفية.jpg') no-repeat center center/cover;
-      min-height: 70vh; /* Reduced height for mobile */
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -91,7 +91,7 @@
       border-radius: 0.5rem;
       font-size: 1.5rem;
       transition: background-color 0.3s ease;
-      touch-action: manipulation; /* Improve touch interaction */
+      touch-action: manipulation;
     }
     body.dark .hamburger {
       background-color: #b91c1c;
@@ -160,12 +160,40 @@
       font-size: 1.75rem;
       margin-bottom: 0.75rem;
     }
+    .contact-card a {
+      color: #1e293b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contact-card a:hover {
+      color: #DC2626;
+    }
+    body.dark .contact-card a {
+      color: #f3f4f6;
+    }
+    body.dark .contact-card a:hover {
+      color: #f87171;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      color: white;
+      font-size: 1.75rem;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #f87171;
+    }
     .gallery-img {
       width: 100%;
       aspect-ratio: 4/3;
       object-fit: cover;
       border-radius: 0.5rem;
-      loading: lazy; /* Lazy load images */
+      loading: lazy;
     }
     .hidden {
       display: none;
@@ -179,7 +207,6 @@
     .show-more-btn:hover, .dark-mode-toggle:hover {
       background-color: #b91c1c;
     }
-    /* Mobile-first media queries */
     @media (min-width: 768px) {
       .hamburger {
         display: none;
@@ -203,10 +230,16 @@
       .contact-info {
         flex-direction: row;
         justify-content: center;
+        flex-wrap: wrap;
       }
       .contact-card {
         flex: 1 1 150px;
         max-width: 200px;
+      }
+      .social-links {
+        width: 100%;
+        margin-top: 1.5rem;
+        justify-content: center;
       }
     }
     @media (max-width: 600px) {
@@ -234,7 +267,6 @@
         padding: 1rem;
       }
     }
-    /* High contrast for accessibility */
     @media (prefers-contrast: high) {
       body {
         background-color: #fff;
@@ -276,7 +308,7 @@
       <a href="#about" class="mobile-menu-btn">من نحن</a>
       <a href="#faq" class="mobile-menu-btn">الأسئلة الشائعة</a>
       <a href="#contact" class="mobile-menu-btn">اتصل بنا</a>
-      <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2F8vg8bHAz6FoUrAxt7%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRjFuV3pibTZwc1lQRmZCaAEedezdliCodVJKXXfKaTzSlb1mRSgX1w2C_hNKSvjRCw8b5UV7itTER0gHr88_aem_OmJ6xBALqsGLi-9vtpKDmw&h=AT3f-SVPZRms_TP5FfMlkJIVJYyUllA9dtydbFILVAhCVOqGxRRmcXuDutowBp3EBh9U4bfkVvEVEJaCUUXlnobOFvpm9u72xGWouoqWqZS5DekpIkcnFLMhuZy3qedA876qeLLIKn8dTfCj&__tn__=-UK-R&c[0]=AT37pnov2UXwx3Q_5WQEwlPIB-CNN7W8z_Cpy0942JKG_4jINhuR3i1XtgM70D8CJ3pkRwz-KVoYSqtvsCg9nGZQpJJ-OoWkdDSlqgQ5csoczblfysvhXY9Lde4wJ0qyj6cn2sMDdrlMG0WmlBEOHkoLFq5s_9_jXWeeKpzTGOHKMtJYpy5i-yqgtOYh5lwBmZDszF0SrGD_IX-g4bYrpjJdwku_vRPLMQbIKLvyoqbNhYMKc24-E1mn-Ft" class="mobile-menu-btn">التقديم</a>
+      <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fforms.gle%2F8vg8bHAz6FoUrAxt7%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExRjFuV3pibTZwc1lQRmZCaAEedezdliCodVJKXXfKaTzSlb1mRSgX1w2C_hNKSvjRCw8b5UV7itTER0gHr88_aem_OmJ6xBALqsGLi-9vtpKDmwh=AT3f-SVPZRms_TP5FfMlkJIVJYyUllA9dtydbFILVAhCVOqGxRRmcXuDutowBp3EBh9U4bfkVvEVEJaCUUXlnobOFvpm9u72xGWouoqWqZS5DekpIkcnFLMhuZy3qedA876qeLLIKn8dTfCj&__tn__=-UK-R&c[0]=AT37pnov2UXwx3Q_5WQEwlPIB-CNN7W8z_Cpy0942JKG_4jINhuR3i1XtgM70D8CJ3pkRwz-KVoYSqtvsCg9nGZQpJJ-OoWkdDSlqgQ5csoczblfysvhXY9Lde4wJ0qyj6cn2sMDdrlMG0wWmlBEOHkoLFq5s_9_jXWeeKpzTGOHKMtJYpy5i-yqgtOYh5lwBmZDszF0SrGD_IX-g4bYrpjJdwku_vRPLMQbIKLvyoqbNhYMKc24-E1mn-Ft" class="mobile-menu-btn">التقديم</a>
       <button id="mobile-dark-mode-toggle" class="mobile-menu-btn dark-mode-toggle" aria-label="تبديل الوضع الليلي"><i class="fas fa-moon mr-2"></i>تبديل الوضع الليلي</button>
     </div>
   </nav>
@@ -308,7 +340,9 @@
       <h2 class="text-xl sm:text-3xl font-bold text-center mb-4 sm:mb-8 text-red-600" data-aos="fade-up">آراء الطلاب</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div class="testimonial-item p-4 sm:p-6 rounded-lg shadow-md bg-white" data-aos="fade-up" data-aos-delay="100">
-          <p class="text-gray-700 mb-4 text-sm sm:text-base">"تجربة الدراسة في مدرسة السويدي غيرت نظرتي للتكنولوجيا. المعلمون داعمون والمناهج عملية جدًا!"</p>
+          <p class="text-gray-700 mb-4 text-sm sm:text-base">"تجرب
+
+ة الدراسة في مدرسة السويدي غيرت نظرتي للتكنولوجيا. المعلمون داعمون والمناهج عملية جدًا!"</p>
           <h3 class="text-sm sm:text-lg font-bold text-red-600">أحمد عيد</h3>
           <p class="text-gray-500 text-xs sm:text-sm">الصف الأول</p>
         </div>
@@ -346,11 +380,11 @@
       <div class="faq-container space-y-4">
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="100">
           <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">ما هي شروط الالتحاق بالمدرسة؟</h3>
-          <p class="text-gray-700 text-sm sm:text-base">يجب أن يكون الطالب حاصلًا على شهادة الإعدادية بدرجة لا تقل عن 220 درجة حسب تنسيق العام السابق وفي انتظار التنسيق الجديد، واجتياز اختبار القبول والمقابلة الشخصية.</p>
+          <p class="text-gray-700 text-sm sm:text-base">يجب أن يكون الطالب حاصلًا على شهادة الإعدادية بدرجة لا تقل عن 220 درجة و لا يقل عن 48 درجة في اللغة الانجليزية و هذا حسب تنسيق العام السابق وفي انتظار التنسيق الجديد،و ان يكون مصري الجنسية واجتياز اختبار القبول والمقابلة الشخصية.</p>
         </div>
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">ما هي المناهج التي يتم تدريسها؟</h3>
-          <p class="text-gray-700 text-sm sm:text-base">نقدم مناهج متخصصة في البرمجة، تطوير التطبيقات، وتصميم المواقع، والذكاء الاصطناعي.</p>
+          <p class="text-gray-700 text-sm sm:text-base">نقدم مناهج متخصصة في البرمجة، تطوير التطبيقات، وتصميم المواقع، وغيره.</p>
         </div>
         <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md" data-aos="fade-up" data-aos-delay="300">
           <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">هل توفر المدرسة أنشطة خارجية؟</h3>
@@ -360,13 +394,17 @@
           <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">هل يتم توفير سكن للطلبة المغتربين؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">للأسف لا يتم توفير سكن للطلبة ولكن يمكن للطالب أخذ سكن على نفقته الخاصة.</p>
         </div>
-        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="400">
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="500">
           <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">كم هي مدة الدراسة بالمدرسة؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">مدة الدراسة تكون 3 سنوات</p>
         </div>
-        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="400">
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="600">
           <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">كم هي مصاريف المدرسة السنوية؟</h3>
           <p class="text-gray-700 text-sm sm:text-base">مصاريف المدرسة السنوية هي مصاريف حكومية لا تتخطى 500 جنيه مصري</p>
+        </div>
+        <div class="faq-item p-4 sm:p-6 rounded-lg shadow-md hidden" data-aos="fade-up" data-aos-delay="700">
+          <h3 class="text-sm sm:text-lg md:text-xl font-bold text-red-600">هل للمدرسة اي فروع اخري؟</h3>
+          <p class="text-gray-700 text-sm sm:text-base">ليس للمدرسة اي فروع اخري في الجمهورية غير الموجودة بمدينة السادس من اكتوبر.</p>
         </div>
       </div>
       <div class="text-center mt-6">
@@ -389,21 +427,28 @@
 
   <!-- Contact Info Section -->
   <footer id="contact" class="bg-red-600 text-white py-6 sm:py-8">
-    <section class="contact-info">
-      <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
-        <i class="fas fa-envelope"></i>
-        <p>البريد الإلكتروني</p>
-        <p>elswedy.iats@gmail.com</p>
+    <section class="container mx-auto px-4">
+      <div class="contact-info">
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-envelope"></i>
+          <p>البريد الإلكتروني</p>
+          <p><a href="mailto:elswedy.iats@gmail.com">elswedy.iats@gmail.com</a></p>
+        </div>
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-phone"></i>
+          <p>الهاتف</p>
+          <p><a href="tel:+201289007669">+201289007669</a></p>
+        </div>
+        <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>الموقع</p>
+          <p><a href="https://maps.app.goo.gl/16TxmoiZ69MYMpot9" target="_blank">مدينة السادس من أكتوبر، منطقة الـ800 فدان، قطاع د</a></p>
+        </div>
       </div>
-      <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
-        <i class="fas fa-phone"></i>
-        <p>الهاتف</p>
-        <p>+201289007669</p>
-      </div>
-      <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
-        <i class="fas fa-map-marker-alt"></i>
-        <p>الموقع</p>
-        <p>مدينة السادس من أكتوبر، منطقة الـ800 فدان، قطاع د</p>
+      <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+        <a href="https://www.facebook.com/profile.php?id=100083837165938" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/company/el-sewedy-iats/" target="_blank" aria-label="لينكدان"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/elsewedyiats?igsh=N3NsdWsxeWVyaW9o" target="_blank" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
       </div>
     </section>
     <div class="container mx-auto px-4 text-center mt-4">
@@ -415,8 +460,8 @@
   <script>
     // Initialize AOS
     AOS.init({
-      disable: window.innerWidth < 768, // Disable AOS on mobile
-      once: true, // Run animations only once
+      disable: window.innerWidth < 768,
+      once: true,
       duration: 600
     });
 
